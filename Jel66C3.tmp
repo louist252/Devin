@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://doskiu8vd2pcg"]
+
+[ext_resource type="Script" path="res://jellyfish.gd" id="1_cpbu4"]
+[ext_resource type="Texture2D" uid="uid://c2urd42j46r7s" path="res://Jellyfish.png" id="1_nupet"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qcbj"]
+atlas = ExtResource("1_nupet")
+region = Rect2(0, 5, 30, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxwxs"]
+atlas = ExtResource("1_nupet")
+region = Rect2(30, 5, 30, 55)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_010wi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qcbj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fxwxs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ypdh"]
+size = Vector2(28, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xp3by"]
+size = Vector2(27, 49)
+
+[node name="Jellyfish" type="AnimatableBody2D"]
+scale = Vector2(2.5, 2.5)
+script = ExtResource("1_cpbu4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_010wi")
+frame_progress = 0.674983
+
+[node name="TopCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -23)
+shape = SubResource("RectangleShape2D_4ypdh")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="TentacleCollision" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 4.5)
+shape = SubResource("RectangleShape2D_xp3by")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

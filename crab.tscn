@@ -1,0 +1,106 @@
+[gd_scene load_steps=13 format=3 uid="uid://c3mlitb3vjm84"]
+
+[ext_resource type="Texture2D" uid="uid://ca31titg3hx3e" path="res://Crab_Walk.png" id="1_bs86p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hb2ju"]
+atlas = ExtResource("1_bs86p")
+region = Rect2(0, 0, 40, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_moi00"]
+atlas = ExtResource("1_bs86p")
+region = Rect2(40, 0, 40, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlxq7"]
+atlas = ExtResource("1_bs86p")
+region = Rect2(80, 0, 40, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p76gw"]
+atlas = ExtResource("1_bs86p")
+region = Rect2(120, 0, 40, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1y2y5"]
+atlas = ExtResource("1_bs86p")
+region = Rect2(160, 0, 40, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdswi"]
+atlas = ExtResource("1_bs86p")
+region = Rect2(200, 0, 40, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8khp"]
+atlas = ExtResource("1_bs86p")
+region = Rect2(240, 0, 40, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccato"]
+atlas = ExtResource("1_bs86p")
+region = Rect2(280, 0, 40, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hq2l3"]
+atlas = ExtResource("1_bs86p")
+region = Rect2(320, 0, 40, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rqcyr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hb2ju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_moi00")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlxq7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p76gw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1y2y5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdswi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8khp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccato")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hq2l3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0kpdg"]
+size = Vector2(40, 27)
+
+[node name="Crab" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_rqcyr")
+frame_progress = 0.345875
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_0kpdg")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, 13)
+emitting = false
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(0, -1)
+spread = 18.0
+initial_velocity_min = 170.0
+initial_velocity_max = 270.0
+scale_amount_min = 2.0
+scale_amount_max = 3.0
+color = Color(0.794399, 3.22476e-06, 9.62615e-07, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_0kpdg")

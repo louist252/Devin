@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://bhhrdtj51jq0a"]
+
+[ext_resource type="Texture2D" uid="uid://tb30x0vdek47" path="res://seaweed.png" id="1_ke6mw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2s5c"]
+atlas = ExtResource("1_ke6mw")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_roval"]
+atlas = ExtResource("1_ke6mw")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kp26v"]
+atlas = ExtResource("1_ke6mw")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rywgf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2s5c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_roval")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kp26v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_roval")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2s5c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3gw7b"]
+size = Vector2(174, 21)
+
+[node name="Seaweed" type="StaticBody2D"]
+
+[node name="Seaweed" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_rywgf")
+autoplay = "default"
+frame_progress = 0.633242
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, 9)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_3gw7b")
+one_way_collision = true

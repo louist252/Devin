@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://bbw7xgd4lysau"]
+
+[ext_resource type="PackedScene" uid="uid://cr4xvvfgyd18" path="res://PirateMan.tscn" id="1_v33h8"]
+[ext_resource type="Texture2D" uid="uid://cqbn0t2fewx2j" path="res://icon.svg" id="2_d6uxk"]
+[ext_resource type="PackedScene" uid="uid://b8g8a5av0g7dt" path="res://Devin.tscn" id="3_ct7xe"]
+[ext_resource type="Texture2D" uid="uid://bbjsle4lufkf7" path="res://platformtilemap.png" id="4_j58p4"]
+[ext_resource type="PackedScene" uid="uid://doskiu8vd2pcg" path="res://Jellyfish.tscn" id="5_bh80a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tln2i"]
+size = Vector2(805, 154)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ian3k"]
+texture = ExtResource("4_j58p4")
+texture_region_size = Vector2i(29, 26)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_jrpm5"]
+tile_size = Vector2i(29, 26)
+sources/0 = SubResource("TileSetAtlasSource_ian3k")
+
+[node name="Scene" type="Node2D"]
+
+[node name="PirateBody" parent="." instance=ExtResource("1_v33h8")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-2.94689, 181.26)
+texture = ExtResource("2_d6uxk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 187)
+shape = SubResource("RectangleShape2D_tln2i")
+
+[node name="SharkBody" parent="." instance=ExtResource("3_ct7xe")]
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(288, -1)
+scale = Vector2(2, 2)
+tile_set = SubResource("TileSet_jrpm5")
+format = 2
+layer_0/tile_data = PackedInt32Array(131068, 0, 0, 131069, 65536, 0, 131070, 65536, 0, 131071, 65536, 0, 65536, 65536, 0, 65537, 131072, 0)
+
+[node name="Jellyfish" parent="." instance=ExtResource("5_bh80a")]
+position = Vector2(-250, -5)

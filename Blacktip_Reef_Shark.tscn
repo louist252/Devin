@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://q3j4tbxg0hpc"]
+
+[ext_resource type="Script" path="res://Blacktip_Reef_Shark_Behavior.gd" id="1_moq68"]
+[ext_resource type="Texture2D" uid="uid://d3dusq1qr7qgl" path="res://BlacktipSharkAnim.png" id="2_ahb6t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6m17"]
+atlas = ExtResource("2_ahb6t")
+region = Rect2(0, 0, 40, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_go4sl"]
+atlas = ExtResource("2_ahb6t")
+region = Rect2(0, 15, 40, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgohx"]
+atlas = ExtResource("2_ahb6t")
+region = Rect2(0, 30, 40, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrym8"]
+atlas = ExtResource("2_ahb6t")
+region = Rect2(0, 45, 40, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_njnke"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6m17")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_go4sl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lgohx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rrym8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xcaqh"]
+size = Vector2(37, 12.5)
+
+[node name="Blacktip Reef Shark" type="CharacterBody2D"]
+script = ExtResource("1_moq68")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_njnke")
+frame_progress = 0.717216
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_xcaqh")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://b8g8a5av0g7dt"]
+
+[ext_resource type="Script" path="res://devin.gd" id="1_d1emi"]
+[ext_resource type="Texture2D" uid="uid://btqshprm0lirl" path="res://Wereshark.png" id="2_6cnex"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m78g4"]
+size = Vector2(13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1j72w"]
+atlas = ExtResource("2_6cnex")
+region = Rect2(0, 0, 50, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbw23"]
+atlas = ExtResource("2_6cnex")
+region = Rect2(0, 20, 50, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iy2ib"]
+atlas = ExtResource("2_6cnex")
+region = Rect2(0, 40, 50, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xanvm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1j72w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbw23")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iy2ib")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="SharkBody" type="CharacterBody2D"]
+visible = false
+position = Vector2(0, -1)
+scale = Vector2(5.5, 5.5)
+script = ExtResource("1_d1emi")
+
+[node name="SharkCollider" type="CollisionShape2D" parent="."]
+position = Vector2(16, 2.98023e-08)
+shape = SubResource("RectangleShape2D_m78g4")
+disabled = true
+
+[node name="SharkAnimation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xanvm")
+autoplay = "default"
+flip_h = true

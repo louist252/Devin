@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3lx0q5cu02mh"]
+
+[ext_resource type="Texture2D" uid="uid://b4uqcyy11xmgh" path="res://Pirate/harpoontip.png" id="1_dyloe"]
+[ext_resource type="Script" path="res://Pirate/harpoon_tip.gd" id="2_xgvfs"]
+[ext_resource type="Texture2D" uid="uid://deot47umwipg3" path="res://harpoonTipParticle.png" id="3_rcmxc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x5cwp"]
+size = Vector2(9.16667, 9)
+
+[sub_resource type="Gradient" id="Gradient_qx00l"]
+colors = PackedColorArray(0.550958, 0.550959, 0.550958, 1, 1, 1, 1, 1)
+
+[node name="HarpoonTip" type="Sprite2D"]
+scale = Vector2(5, 5)
+texture = ExtResource("1_dyloe")
+script = ExtResource("2_xgvfs")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.333333, -0.5)
+shape = SubResource("RectangleShape2D_x5cwp")
+
+[node name="HarpoonWaterParticleLeft" type="CPUParticles2D" parent="."]
+visible = false
+position = Vector2(3.66667, -0.666667)
+rotation = 0.785398
+amount = 60
+lifetime = 0.7
+texture = ExtResource("3_rcmxc")
+direction = Vector2(-1, 0)
+spread = 5.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+angle_min = -45.0
+angle_max = -45.0
+scale_amount_min = 0.2
+scale_amount_max = 0.4
+color = Color(0.299968, 0.511606, 1, 1)
+color_ramp = SubResource("Gradient_qx00l")
+
+[node name="HarpoonWaterParticleRight" type="CPUParticles2D" parent="."]
+visible = false
+position = Vector2(3.66667, -0.666667)
+rotation = -0.785398
+amount = 60
+lifetime = 0.6
+texture = ExtResource("3_rcmxc")
+direction = Vector2(-1, 0)
+spread = 5.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+angle_min = 45.0
+angle_max = 45.0
+scale_amount_min = 0.2
+scale_amount_max = 0.4
+color = Color(0.299968, 0.511606, 1, 1)
+color_ramp = SubResource("Gradient_qx00l")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = -1
+texture = ExtResource("1_dyloe")
+gravity = Vector2(0, 0)
+scale_amount_min = 5.0
+scale_amount_max = 5.0
+color = Color(0, 0, 1, 1)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

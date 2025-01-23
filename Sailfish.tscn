@@ -1,0 +1,63 @@
+[gd_scene load_steps=11 format=3 uid="uid://dlka7cpwvjl3g"]
+
+[ext_resource type="Texture2D" uid="uid://sc6b1y3usoge" path="res://Sailfish_idle.png" id="1_ac8ta"]
+[ext_resource type="Shader" uid="uid://pg5id63hscx6" path="res://SwimmingIdle.tres" id="1_fstft"]
+[ext_resource type="Texture2D" uid="uid://cu8tlkfjb0bck" path="res://skin.png" id="3_ia88a"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c0tci"]
+shader = ExtResource("1_fstft")
+shader_parameter/FloatParameter = 1.0
+shader_parameter/amplitude = Vector2(1, 50)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qlwxw"]
+shader = ExtResource("1_fstft")
+shader_parameter/FloatParameter = 0.7
+shader_parameter/amplitude = Vector2(1, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbo4p"]
+atlas = ExtResource("1_ac8ta")
+region = Rect2(0, 0, 70, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7rsj"]
+atlas = ExtResource("1_ac8ta")
+region = Rect2(0, 20, 70, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3p8n5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbo4p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7rsj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dfhir"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tmdl0"]
+shader = ExtResource("1_fstft")
+shader_parameter/FloatParameter = 1.0
+shader_parameter/amplitude = Vector2(1, 50)
+
+[node name="Sailfish" type="CharacterBody2D"]
+material = SubResource("ShaderMaterial_c0tci")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_qlwxw")
+sprite_frames = SubResource("SpriteFrames_3p8n5")
+animation = &"idle"
+frame_progress = 0.60291
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dfhir")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_tmdl0")
+texture = ExtResource("3_ia88a")
+polygon = PackedVector2Array(-33, -4, -11, -4, -4, -6, 0, -10, 21, -10, 22, -4, 32, -10, 34, -5, 34, 5, 31, 8, 23, 3, 13, 5, 8, 10, -1, 10, -7, 6, -14, 2, -34, 2, -34, -4)

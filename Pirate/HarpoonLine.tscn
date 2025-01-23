@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://br50jm26f0ct7"]
+
+[ext_resource type="Texture2D" uid="uid://chupi5g40sfvj" path="res://Pirate/HarpoonChain.png" id="1_ixbg2"]
+
+[node name="HarpoonChain" type="Line2D"]
+texture_repeat = 2
+scale = Vector2(3, 3)
+points = PackedVector2Array(0, 0, 0, 0)
+texture = ExtResource("1_ixbg2")
+texture_mode = 1
